@@ -1,0 +1,20 @@
+{
+  "name": "entity-provider",
+  "version": "1.0.0",
+  "description": "A entity provider from scratch",
+  "homepage": "https://github.com/caiquealves224/entity-provider#readme",
+  "bugs": {
+    "url": "https://github.com/caiquealves224/entity-provider/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiquealves224/entity-provider.git"
+  },
+  "license": "ISC",
+  "author": "caiquealves224@gmail.com",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
