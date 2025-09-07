@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "auth-service-client-http",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
