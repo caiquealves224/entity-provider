@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from 'express';
 import { env } from './utils/env.ts';
+import { connectToDatabase } from './utils/db.ts';
 
 const app = express();
 
@@ -19,4 +20,6 @@ app.get('/health', (req: Request, res: Response) => {
 app.listen(Number(env.PORT), () => {
   console.log(`${env.APP_NAME} is running on ${env.NODE_ENV === 'development' ?
     'http://localhost' : '0.0.0.0'}:${Number(env.PORT)} in ${env.NODE_ENV} mode.`);
+
+  connectToDatabase();
 });
