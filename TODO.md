@@ -1,3 +1,5 @@
+# Insights para a V2 desse projeto
+
 Que iniciativa bacana! Implementar um IdP do zero para estudos é uma excelente forma de aprofundar seu conhecimento em segurança e gerenciamento de identidade. Para que seu projeto seja um sucesso e você entenda os limites de contexto que precisa respeitar, vamos dividi-los em algumas áreas chave:
 
 1. Limites de Escopo e Funcionalidade
