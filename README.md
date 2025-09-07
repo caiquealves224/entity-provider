@@ -6,3 +6,10 @@ Creating a entity provider from scratch (or trying)...
 - Backend: Express
 - Frontend: React
 - Runtime: NodeJs
+
+# Funcionalidades iniciais
+
+## Cadastro
+## Login
+## Logout
+## Recuperação de senha
