@@ -12,10 +12,12 @@
   },
   "license": "ISC",
   "author": "caiquealves224@gmail.com",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx --watch backend/server.ts",
+    "build": "tsup backend/server.ts --format esm --dts --minify",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "express": "^5.1.0"
