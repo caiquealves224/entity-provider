@@ -1,9 +1,11 @@
 import {Router} from "express";
 import { signup } from "../controllers/auth.controller.ts";
+import { validate } from "../middleware/validate.middleware.ts";
+import { BaseSignupSchema } from "../../shared/auth.schema.ts";
 
 const router = Router();
 
-router.post('/signup', signup);
+router.post('/signup', validate(BaseSignupSchema, 'body'), signup);
 
 router.post('/login', (req, res) => {
   // Login logic here

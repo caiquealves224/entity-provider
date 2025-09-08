@@ -5,16 +5,17 @@ meta {
 }
 
 post {
-  url: http://localhost:3000/api/v1/auth/signup
+  url: {{base_url}}/api/v1/auth/signup
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "name": "Jonh doe",
-    "email": "jonh3@doe.com",
-    "password": "password"
+    "name": "john",
+    "email": "jonh4@doe.com",
+    "password": "password",
+    "confirmPassword": "password"
   }
 }
 
