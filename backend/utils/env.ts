@@ -14,10 +14,10 @@ export const envSchema = z.object({
   MAILTRAP_COMPANY_NAME: z.string().min(1),
   MAILTRAP_ACCOUNT_ID: z.coerce.number().min(1),
 
-  JWT_SECRET_KEY: z.string().min(1),
+  JWT_SECRET_KEY: z.string(),
   JWT_EXPIRES_IN: z.string().default("1h"),
   JWT_COOKIE_NAME: z.string().min(1),
-  JWT_COOKIE_MAX_AGE_IN_MS: z.coerce.number().min(1).default(3600000),
+  JWT_COOKIE_MAX_AGE_IN_MS: z.coerce.string().refine((s) => parseInt(s, 10) > 0),
 });
 
 type Env = z.infer<typeof envSchema>;
