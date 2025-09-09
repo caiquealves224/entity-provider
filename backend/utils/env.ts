@@ -18,6 +18,8 @@ export const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().default("1h"),
   JWT_COOKIE_NAME: z.string().min(1),
   JWT_COOKIE_MAX_AGE_IN_MS: z.coerce.string().refine((s) => parseInt(s, 10) > 0),
+
+  BCRYPT_SALT_ROUNDS: z.coerce.number().min(1).max(20).default(10),
 });
 
 type Env = z.infer<typeof envSchema>;

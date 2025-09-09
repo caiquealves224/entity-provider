@@ -11,6 +11,6 @@ export const calculateExpirationAt = (minutes: number) => {
 }
 
 export const generateJwt = (userId: string) => {
-  const token = jwt.sign({ id: userId }, env.JWT_SECRET_KEY, { expiresIn: env.JWT_EXPIRES_IN });
+  const token = jwt.sign({ id: userId }, env.JWT_SECRET_KEY, { expiresIn: env.JWT_EXPIRES_IN as jwt.SignOptions['expiresIn'] });
   return token;
 };
