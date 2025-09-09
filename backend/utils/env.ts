@@ -6,6 +6,18 @@ export const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]),
 
   MONGO_CONNECTION_STRING: z.string(),
+
+  MAILTRAP_API_TOKEN: z.string().min(1),
+
+  MAILTRAP_SENDER_EMAIL: z.email(),
+  MAILTRAP_SENDER_NAME: z.string().min(1),
+  MAILTRAP_COMPANY_NAME: z.string().min(1),
+  MAILTRAP_ACCOUNT_ID: z.coerce.number().min(1),
+
+  JWT_SECRET_KEY: z.string().min(1),
+  JWT_EXPIRES_IN: z.string().default("1h"),
+  JWT_COOKIE_NAME: z.string().min(1),
+  JWT_COOKIE_MAX_AGE_IN_MS: z.coerce.number().min(1).default(3600000),
 });
 
 type Env = z.infer<typeof envSchema>;

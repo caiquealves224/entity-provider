@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express';
 import UserModel from '../models/user.model.ts';
 import { generateVerificationToken } from '../utils/auth.utils.ts';
+import { sendVerificationEmail } from '../services/mailtrap/mailtrap.service.ts';
 
 export const signup = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
@@ -28,7 +29,9 @@ export const signup = async (req: Request, res: Response) => {
 
     // todo: generate token jwt
 
-    // todo: send verification email
+    // TODO: transform in asynchronous event
+    // TODO: replace 'TODO' with actual recipient email
+    await sendVerificationEmail(email, verificationToken);
 
     console.log('signup route hit');
     res.status(201).json({ success: true, message: 'User created successfully', data: newUser });
