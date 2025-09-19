@@ -1,7 +1,8 @@
 import type { Request, Response } from 'express';
 import UserModel from '../models/user.model.ts';
-import { generateVerificationToken } from '../utils/auth.utils.ts';
+import { generateJwt, generateVerificationToken, setTokenCookie } from '../utils/auth.utils.ts';
 import { sendVerificationEmail } from '../services/mailtrap/mailtrap.service.ts';
+import { UserDto } from '../models/DTOs/user.dto.ts';
 
 export const signup = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
@@ -28,13 +29,21 @@ export const signup = async (req: Request, res: Response) => {
     await newUser.save();
 
     // todo: generate token jwt
+    console.log('Generating JWT token and setting cookie');
+    const token = generateJwt(newUser._id.toString());
+    setTokenCookie(res, token);
+    console.log('Generated JWT token:', token);
 
     // TODO: transform in asynchronous event
     // TODO: replace 'TODO' with actual recipient email
     await sendVerificationEmail(email, verificationToken);
 
     console.log('signup route hit');
-    res.status(201).json({ success: true, message: 'User created successfully', data: newUser });
+    res.status(201).json({ 
+      success: true,
+      message: 'User created successfully',
+      data: UserDto.toJson(newUser)
+    });
   } catch (error: unknown) {
     console.error('Error occurred during signup:', error);
     res.status(500).json({ message: 'Internal server error' });
