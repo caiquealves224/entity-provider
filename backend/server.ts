@@ -3,9 +3,14 @@ import { env } from './utils/env.ts';
 import { connectToDatabase } from './utils/db.ts';
 import authRoutes from './routes/auth.routes.ts';
 
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+
 const app = express();
 
 app.use(express.json());
+app.use(helmet());
+app.use(cookieParser());
 
 app.get('/', (req: Request, res: Response) => {
   res.redirect('/health');
